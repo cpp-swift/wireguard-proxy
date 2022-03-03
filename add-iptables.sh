@@ -4,7 +4,7 @@ read -p "Are you NOW ready for iptables? (Y/N): " IPTABLES
 
 iptables() {
 
-	read "Please input the port you want to open: " $FORWARD_PORT
+	read -p "Please input the port you want to open: " FORWARD_PORT
 
 	echo "Creating default rule..."
     iptables -F
