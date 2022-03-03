@@ -59,7 +59,7 @@ sed -i "s/<insert-public-key-of-onprem>/$PUB_KEY/" $WG_CONF
 systemctl restart wg-quick@wg0
 
 printf '\n'
-read "Ready for iptables? (Y/N): " $IPTABLES
+read -p "Ready for iptables? (Y/N): " $IPTABLES
 
 iptables() {
 
@@ -89,4 +89,6 @@ iptables() {
 
 if [ "$IPTABLES" == Y ]; then
 	iptables()
-else printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!'
+else
+	printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!'
+fi

@@ -28,6 +28,8 @@ iptables() {
 	echo "Finished! Please make sure that you modify your firewall rules!"
 }
 
-if [ "$IPTABLES" == Y ]; then
+if [ "$IPTABLES" == "Y" ]; then
 	iptables()
-else printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!'
+else
+    printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!\n'
+fi
