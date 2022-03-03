@@ -15,7 +15,10 @@ sudo apt install wireguard -y
 # generating wireguard keys
 echo "Generating Wireguard keys..."
 (umask 077 && printf "[Interface]\nPrivateKey = " | sudo tee /etc/wireguard/wg0.conf > /dev/null)
+
+echo "========================================"
 wg genkey | sudo tee -a /etc/wireguard/wg0.conf | wg pubkey | sudo tee /etc/wireguard/publickey
+echo "========================================"
 
 # don't change these
 echo "This is your public key! Copy it and save it somewhere!"
@@ -39,7 +42,6 @@ echo "AllowedIPs = $ALLOWED_IPS" >> $WG_CONF
 
 # starting wireguard...
 echo "Starting Wireguard..."
-
 
 sudo systemctl start wg-quick@wg0
 sudo systemctl enable wg-quick@wg0
