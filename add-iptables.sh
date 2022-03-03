@@ -29,7 +29,7 @@ iptables() {
 }
 
 if [[ "$IPTABLES" == "Y" ]] ; then
-	iptables()
+	iptables();
 fi
 #    printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!\n'
 #fi
