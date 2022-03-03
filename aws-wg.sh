@@ -83,6 +83,9 @@ iptables-add() {
 	netfilter-persistent save
 	systemctl enable netfilter-persistent
 
+	echo "Enabling IPv4 forwarding..."
+	sysctl -w net.ipv4.ip_forward=1
+
 	printf '\n'
 	echo "Finished! Please make sure that you modify your firewall rules!"
 }
