@@ -2,7 +2,7 @@
 
 read -p "Are you NOW ready for iptables? (Y/N): " IPTABLES
 
-iptables() {
+iptables-add() {
 
 	read -p "Please input the port you want to open: " FORWARD_PORT
 
@@ -29,7 +29,7 @@ iptables() {
 }
 
 if [[ "$IPTABLES" == 'Y' ]] ; then
-	iptables
+	iptables-add
 else
     printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!\n'
 fi
