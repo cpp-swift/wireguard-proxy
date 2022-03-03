@@ -8,6 +8,7 @@ fi
 read -p 'Please input the port number you want Wireguard to listen on: ' LISTEN_PORT
 
 # installing wireguard
+printf '\n'
 echo "============================================"
 echo "Installing Wireguard..."
 

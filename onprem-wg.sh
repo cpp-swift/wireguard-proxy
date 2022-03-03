@@ -9,6 +9,7 @@ read -p 'Please input the IP and port number of the endpoint (IP:PORT): ' ENDPOI
 read -sp 'Plase input the Wireguard public key of the Lightsail instance: ' PUB_KEY
 
 # installing wireguard
+printf '\n'
 echo "============================================"
 echo "Installing Wireguard..."
 
@@ -39,7 +40,7 @@ ALLOWED_IPS="192.168.4.1/32"
 echo "Address = $IP_ADDR" >> $WG_CONF
 
 echo "[Peer]" >> $WG_CONF
-echo "PublicKey = $PUB_KEY" 
+echo "PublicKey = $PUB_KEY" >> $WG_CONF
 echo "AllowedIPs = $ALLOWED_IPS" >> $WG_CONF
 echo "Endpoint = $ENDPOINT" >> $WG_CONF
 echo "PersistentKeepalive = 25" >> $WG_CONF
