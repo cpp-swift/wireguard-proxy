@@ -6,7 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # installing wireguard
-echo "========================================"
+echo "============================================"
 echo "Installing Wireguard..."
 
 sudo apt update
@@ -16,9 +16,10 @@ sudo apt install wireguard -y
 echo "Generating Wireguard keys..."
 (umask 077 && printf "[Interface]\nPrivateKey = " | sudo tee /etc/wireguard/wg0.conf > /dev/null)
 
-echo "========================================"
+printf "\n"
+echo "============================================"
 wg genkey | sudo tee -a /etc/wireguard/wg0.conf | wg pubkey | sudo tee /etc/wireguard/publickey
-echo "========================================"
+echo "============================================"
 
 # don't change these
 echo "This is your public key! Copy it and save it somewhere!"
