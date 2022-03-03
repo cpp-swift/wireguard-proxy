@@ -12,8 +12,8 @@ printf '\n'
 echo "============================================"
 echo "Installing Wireguard..."
 
-sudo apt update
-sudo apt install wireguard -y
+apt update
+apt install wireguard -y
 
 # generating wireguard keys
 echo "Generating Wireguard keys..."
@@ -45,5 +45,15 @@ echo "AllowedIPs = $ALLOWED_IPS" >> $WG_CONF
 # starting wireguard...
 echo "Starting Wireguard..."
 
-sudo systemctl start wg-quick@wg0
-sudo systemctl enable wg-quick@wg0
+systemctl start wg-quick@wg0
+systemctl enable wg-quick@wg0
+
+printf '\n'
+echo "============================================"
+echo "Please run onprem-wg.sh on the on-prem server..."
+read -sp 'Please input the Wireguard public key of the on-prem server: ' PUB_KEY
+
+sed -i "s/<insert-public-key-of-onprem>/$PUB_KEY/" $WG_CONF
+
+systemctl restart wg-quick@wg0
+
