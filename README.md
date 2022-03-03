@@ -1,2 +1,2 @@
-# proxy-vpn-scripts
-Scripts to create Proxy VPN from AWS to TelcoLab (or any homelab)
+# wireguard-proxy-scripts
+Scripts to expose service behind a NAT router/firewall using Wireguard, AWS, and iptables.
