@@ -66,6 +66,8 @@ iptables() {
 	read "Please input the port you want to open: " $FORWARD_PORT
 
 	echo "Creating default rule..."
+	iptables -F
+    iptables -F -t nat
 	iptables -P FORWARD DROP
 
 	echo "Allowing port $FORWARD_PORT..."
