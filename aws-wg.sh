@@ -59,7 +59,7 @@ sed -i "s/<insert-public-key-of-onprem>/$PUB_KEY/" $WG_CONF
 systemctl restart wg-quick@wg0
 
 printf '\n'
-read -p "Ready for iptables? (Y/N): " $IPTABLES
+read -p "Ready for iptables? (Y/N): " IPTABLES
 
 iptables-add() {
 
