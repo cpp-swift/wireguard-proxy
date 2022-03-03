@@ -61,12 +61,12 @@ systemctl restart wg-quick@wg0
 printf '\n'
 read -p "Ready for iptables? (Y/N): " $IPTABLES
 
-iptables() {
+iptables-add() {
 
-	read "Please input the port you want to open: " $FORWARD_PORT
+	read -p "Please input the port you want to open: " FORWARD_PORT
 
 	echo "Creating default rule..."
-	iptables -F
+    iptables -F
     iptables -F -t nat
 	iptables -P FORWARD DROP
 
@@ -87,8 +87,8 @@ iptables() {
 	echo "Finished! Please make sure that you modify your firewall rules!"
 }
 
-if [ "$IPTABLES" == Y ]; then
-	iptables()
+if [[ "$IPTABLES" == 'Y' ]] ; then
+	iptables-add
 else
-	printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!'
+    printf '\nI will assume that you are not ready for iptables. WEAK! QUITTING!\n'
 fi
