@@ -5,7 +5,7 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-read -sp 'Plase input the Wireguard public key of the on-prem server: ' PUB_KEY
+read -sp 'Please input the Wireguard public key of the on-prem server: ' PUB_KEY
 
 sed -i "s/<insert-public-key-of-onprem>/$PUB_KEY/" /etc/wireguard/wg0.conf
 
