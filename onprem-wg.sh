@@ -5,6 +5,9 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+read -p 'Please input the IP and port number of the endpoint (IP:PORT): ' ENDPOINT
+read -sp 'Plase input the Wireguard public key of the Lightsail instance: ' PUB_KEY
+
 # installing wireguard
 echo "============================================"
 echo "Installing Wireguard..."
@@ -27,19 +30,19 @@ printf "\n"
 echo "Editing /etc/wireguard/wg0.conf..."
 
 WG_CONF="/etc/wireguard/wg0.conf"
-PUB_KEY=$(cat /etc/wireguard/publickey)
 
 # you can change these to your liking
-LISTEN_PORT="55107"
-IP_ADDR="192.168.4.1"
-ALLOWED_IPS="192.168.4.2/32"
+IP_ADDR="192.168.4.2"
+ALLOWED_IPS="192.168.4.1/32"
 
 # editing /etc/wireguard/wg0.conf file...
-echo "ListenPort = $LISTEN_PORT" >> $WG_CONF
 echo "Address = $IP_ADDR" >> $WG_CONF
+
 echo "[Peer]" >> $WG_CONF
-echo "PublicKey = $PUB_KEY" >> $WG_CONF
+echo "PublicKey = $PUB_KEY" 
 echo "AllowedIPs = $ALLOWED_IPS" >> $WG_CONF
+echo "Endpoint = $ENDPOINT" >> $WG_CONF
+echo "PersistentKeepalive = 25" >> $WG_CONF
 
 # starting wireguard...
 echo "Starting Wireguard..."
