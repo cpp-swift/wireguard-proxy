@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Are you NOW ready for iptables? (Y/N): " $IPTABLES
+read -p "Are you NOW ready for iptables? (Y/N): " IPTABLES
 
 iptables() {
 
