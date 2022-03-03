@@ -35,7 +35,7 @@ ALLOWED_IPS="192.168.4.2/32"
 
 # editing /etc/wireguard/wg0.conf file...
 echo "ListenPort = $LISTEN_PORT" >> $WG_CONF
-echo "Address = $IP_ADDR\n" >> $WG_CONF
+echo "Address = $IP_ADDR" >> $WG_CONF
 echo "[Peer]" >> $WG_CONF
 echo "PublicKey = $PUB_KEY" >> $WG_CONF
 echo "AllowedIPs = $ALLOWED_IPS" >> $WG_CONF
@@ -47,3 +47,4 @@ echo "========================================"
 
 sudo systemctl start wg-quick@wg0
 sudo systemctl enable wg-quick@wg0
+
